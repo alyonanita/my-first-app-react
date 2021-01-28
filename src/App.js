@@ -6,6 +6,7 @@ import Context from "./context"
 
 function App() {
   const [addInput, setInput] = useState(true);
+  const [naddInput, setnInput] = useState("salarymonth");
 
   const [metods, setMetods] = useState([
     { id: 1, completed: true, title: 'Оклад за месяц', addinput: "salarymonth" },
@@ -20,11 +21,13 @@ function App() {
       metods.map(metod => {
         if (id === 1) {
           setInput(true);
+          
         } else {
           setInput(false);
         }
         if (metod.id === id) {
           metod.completed = !metod.completed
+          setnInput(metod.addinput);
 
         }
         else {
@@ -43,7 +46,7 @@ function App() {
       <div className="wrapper">
         <form className="wrapper">
           <h1>Сумма</h1>
-          <MetodList metods={metods} onToggle={toggleMetod} showInfo={addInput} />
+          <MetodList metods={metods} onToggle={toggleMetod} showInfo={addInput} showInput={naddInput} />
 
           {/* <AddText onCreate={addTodo}/> */}
         </form>

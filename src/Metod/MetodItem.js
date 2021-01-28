@@ -24,7 +24,7 @@ function MetodItem({ metod, onChange }) {
                 style={styles.input}
                 onChange={() => onChange(metod.id)}
                 name="metod" />
-            <label for={metod.id} >{metod.title}</label>
+            <label htmlFor={metod.id} >{metod.title}</label>
 
         </div>
     )
