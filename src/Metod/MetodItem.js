@@ -1,49 +1,34 @@
-import React, {useContext,useState} from 'react'
+import React from 'react'
 import PropTypes from "prop-types";
-import Context from "../context";
-// import Iconadd from "../Iconadd"
 
-
-
-
-function MetodItem({ metod, index, onChange }) {
-// const [showIcon, setIconDisabled] = useState(false);
-
-const styles = {
-    input: {
-        marginRight: '1rem'
-    }
-}
-
- 
-     const {removeTodo} = useContext(Context)
-     const classes = []
-
-     if (metod.completed) {
-         classes.push('done')
-     }
-     if (metod.addinput==="MROT") {
-        // setIconDisabled(true)
+function MetodItem({ metod, onChange }) {
+    const styles = {
+        input: {
+            marginRight: '1rem'
         }
-         
-    //  console.log('todo', todo)
-    
-    return(
+    }
+
+    const classes = []
+
+    if (metod.completed) {
+        classes.push('done')
+    }
+
+    return (
         <div>
-             <input 
-                type="radio" 
+            <input
+                type="radio"
                 value={metod.title}
-                id={metod.id} 
+                id={metod.id}
                 checked={metod.completed}
-                style={styles.input} 
-                onChange={()=>onChange(metod.id)}
-               //onChange={handleChange} 
-               name="metod" />              
-             <label for={metod.id} >{metod.title}</label>
-           
+                style={styles.input}
+                onChange={() => onChange(metod.id)}
+                name="metod" />
+            <label for={metod.id} >{metod.title}</label>
+
         </div>
     )
-    
+
 }
 
 MetodItem.protoTypes = {

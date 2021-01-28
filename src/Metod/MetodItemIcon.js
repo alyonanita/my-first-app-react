@@ -1,6 +1,5 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import Context from "../context";
 import { UncontrolledTooltip } from 'reactstrap';
 import Icon from "@material-ui/core/Icon";
 
@@ -24,17 +23,11 @@ const TooltipContent = ({ scheduleUpdate }) => {
 
 function MetodItem({ metod, index, onChange }) {
   const [iconflag, seticonflag] = useState(true);
-
- 
-  const [open, setOpen] = React.useState(false);
-
   const handleTooltipClose = () => {
-    setOpen(false);
     seticonflag(!iconflag);
   };
 
   const handleTooltipOpen = () => {
-    setOpen(true);
     seticonflag(!iconflag);
   };
   const styles = {
@@ -43,12 +36,11 @@ function MetodItem({ metod, index, onChange }) {
     },
   };
 
-  const { removeTodo } = useContext(Context);
   const classes = [];
 
   if (metod.completed) {
     classes.push("done");
-  } 
+  }
 
 
   return (
@@ -60,19 +52,18 @@ function MetodItem({ metod, index, onChange }) {
         checked={metod.completed}
         style={styles.input}
         onChange={() => onChange(metod.id)}
-        //onChange={handleChange}
         name="metod"
       />
       <label for={metod.id}>{metod.title}</label>
 
-        <Icon
-          id="ScheduleUpdateTooltip"
-          onClick={handleTooltipOpen}
-          onClose={handleTooltipClose}
-          className="materials-icons"
-        >
-          {(iconflag)?"priority_high":"clear"}
-        </Icon>
+      <Icon
+        id="ScheduleUpdateTooltip"
+        onClick={handleTooltipOpen}
+        onClose={handleTooltipClose}
+        className="materials-icons"
+      >
+        {(iconflag) ? "priority_high" : "clear"}
+      </Icon>
 
       <UncontrolledTooltip
         placement="bottom"
