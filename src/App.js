@@ -1,8 +1,5 @@
 import React, { useState } from 'react'
 import MetodList from "./Metod/MetodList"
-import Context from "./context"
-
-
 
 function App() {
   const [addInput, setInput] = useState(true);
@@ -37,23 +34,14 @@ function App() {
       })
     )
   }
-  function removeTodo(id) {
-
-    console.log(id);
-  }
-  return (
-    <Context.Provider value={{ removeTodo }}>
+  
+  return (   
       <div className="wrapper">
         <form className="wrapper">
           <h1>Сумма</h1>
           <MetodList metods={metods} onToggle={toggleMetod} showInfo={addInput} showInput={naddInput} />
-
-          {/* <AddText onCreate={addTodo}/> */}
         </form>
       </div>
-    </Context.Provider>
-
-
   )
 }
 
